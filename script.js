@@ -18,14 +18,13 @@ $(document).ready(function(){
 			//clear input box
 			console.log("esc key pressed");
 		};
-
 	}
 
 	
 			
 							
 
-		});
+});
 
 	
 
@@ -40,5 +39,3 @@ $(document).ready(function(){
 	//delete-click
 	//hover
 	//all/active/complted - click
-
-})
