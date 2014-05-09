@@ -4,15 +4,28 @@ $(document).ready(function(){
 	function setListeners(){
 		//keystroke
 		$("#new-todo").keyup(function(e){
-			if(e.keystroke==13){
 			//do stuff here
-			//console.log("enter key was pressed");
-                // get the entry
-                var newentry = this.value;
-                //console.log(newentry);				
-			};
+			checkInput(e);
 		});
-	};
+	}		    	
+			
+	function checkInput(e) {
+		if(e.keyCode == 13){
+			insertEntry();
+			console.log("enter key pressed");
+		}
+		else if (e.keyCode == 27) {
+			//clear input box
+			console.log("esc key pressed");
+		};
+
+	}
+
+	
+			
+							
+
+		});
 
 	
 
