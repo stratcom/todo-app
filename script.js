@@ -1,9 +1,10 @@
-$(document).ready(function(){
+$(function(){
 
 	var todos = '';
 	function fromStorage() {
 		// get entries from localstorage if they exist.
 		// populate the list with entries and ids.
+		
 		if(localStorage && localStorage.length > 0) {
 
 			// run populateList to insert all the entries
@@ -12,31 +13,29 @@ $(document).ready(function(){
 			var a = [];
 			localStorage.setItem('todos',JSON.stringify(a));
 		}
+		
 		// setListners after the list has been built.
 		setListeners();
 	}	
-
 	function setListeners(){
 		//keystroke
-		$("#new-todo").keyup(function(e){
+		$("#new-todo").keyup(function(e) {
 			//do stuff here
 			checkInput(e);
-		});
-	}		    	
-			
+		})
+	}		    	 
 	function checkInput(e) {
 		// if enter key
 		if(e.keyCode == 13){
-			//no longer insertEntry();
 			//save the entry to localStorage
 			saveEntry();
 			console.log("enter key pressed");
-			//if esc key			
 		}
+		//if esc key
 		else if (e.keyCode == 27) {
 			//clear input box
 			console.log("esc key pressed");
-		};
+		}
 	}
 	// build list based on the contents of localStorage
 	function populateList() {
@@ -69,24 +68,33 @@ $(document).ready(function(){
   	}
   	
   		function saveEntry(entry) {
-		var entry = $('#new-todo').val();
 		var id = uuid();
 		var todoEntry = {
 			'id':id,
 			'name':entry,
-			}
-		localStorage.setItem('Todos', JSON.stringify(todoEntry));
-		
-		/*        todos = [];
-		    } else {
-		        // Parse the serialized data back into an array of objects
-		        todos = JSON.parse(localStorage.getItem('todos'));*/
 		}
 
+		
 
+	var a = [];
+				if (localStorage.getItem('todos') === null) {
+			        a = [];
+			    } else {
+			        // Parse the serialized data back into an array of objects
+			        a = JSON.parse(localStorage.getItem('todos'));
+			    }
 
+		    // Push the new data (whether it be an object or anything else) onto the array
+		    a.push(todoEntry);
+		    // Re-serialize the array back into a string and store it in localStorage
+		    localStorage.setItem('todos', JSON.stringify(a));
 
+			// localStorage.setItem('Todos', JSON.stringify(todoEntry));
 
+			insertEntry(entry,id);
+		}
+
+	fromStorage();
 
 
   	//}				
