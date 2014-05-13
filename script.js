@@ -97,14 +97,7 @@ $(function(){
 	fromStorage();
 
 
-  	//}				
-
-  	// $(function() {
-  	// 'id':id,
-  	//		'name':entry
-	
-			
-	// finish local storage
+  
 	//checkmark=click
 	//complete all - click
 	//remove all completed
