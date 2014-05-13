@@ -23,7 +23,18 @@ $(function(){
 			//do stuff here
 			checkInput(e);
 		})
-	}		    	 
+	}	
+
+
+	// event listener &
+	//checkmark strikes through text if checked using type 'checkbox'
+
+
+
+	// double click on to do opens up the edit function
+	// will use toggle-all to add and remove classes
+	// tht t0-do-list .edit and editing funcctions
+
 	function checkInput(e) {
 		// if enter key
 		if(e.keyCode == 13){
@@ -52,6 +63,13 @@ $(function(){
  				$('#todo-list li:last-child').attr('data-id',id);
 				$('#new-todo').val('');
 	}
+
+
+
+
+
+
+
 
 	function uuid() {
   			var i, random;
@@ -97,12 +115,21 @@ $(function(){
 	fromStorage();
 
 
-  
-	//checkmark=click
-	//complete all - click
+  	
+
+	// event listener &
+	//complete all - click makes all completed -- check and 
+	//strike through and toggles all on and off
+
 	//remove all completed
-	//delete-click
-	//hover
+	
+	// event listener &
+	//delete-click on "x" removes the item
+
+
+	
+
+	
 	//all/active/complted - click
 
 							
