@@ -2,34 +2,32 @@ $(function(){
 
 	var todos = '';
 	function fromStorage() {
-		// get entries from localstorage if they exist.
-		// populate the list with entries and ids.
-		
+		// get entries from localstorage and populate the list.
 		if(localStorage && localStorage.length > 0) {
-
-			// run populateList to insert all the entries
-			// populateList();
+			// run fillList to insert all the entries
 		} else {
 			var a = [];
 			localStorage.setItem('todos',JSON.stringify(a));
 		}
-		
 		// setListners after the list has been built.
+		fillList();
 		setListeners();
 	}	
 	function setListeners(){
-		//keystroke
+		//keystroke listen for
 		$("#new-todo").keyup(function(e) {
 			//do stuff here
 			checkInput(e);
+		});
+
+		$('#toggle-all').on('click', function() {
+			// console.log($(this).is(':checked'));
+			toggleAllComplete();
 		})
+
 	}	
-
-
 	// event listener &
 	//checkmark strikes through text if checked using type 'checkbox'
-
-
 
 	// double click on to do opens up the edit function
 	// will use toggle-all to add and remove classes
@@ -45,11 +43,19 @@ $(function(){
 		//if esc key
 		else if (e.keyCode == 27) {
 			//clear input box
+			stopEditing();
 			console.log("esc key pressed");
 		}
 	}
+	function stopEditing(){
+		$('.editing').removeClass('editing');
+		$('.edit').val('');
+	}
+
+
+
 	// build list based on the contents of localStorage
-	function populateList() {
+	function fillList() {
 		for (var i = localStorage.length - 1; i >= 0; i--) {
 			//localStorage[i]
 			console.log("Entries in localStorage");
@@ -63,12 +69,6 @@ $(function(){
  				$('#todo-list li:last-child').attr('data-id',id);
 				$('#new-todo').val('');
 	}
-
-
-
-
-
-
 
 
 	function uuid() {
@@ -126,10 +126,6 @@ $(function(){
 	// event listener &
 	//delete-click on "x" removes the item
 
-
-	
-
-	
 	//all/active/complted - click
 
 							
